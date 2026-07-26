@@ -6,6 +6,9 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.beaconex-solutions.com",
   location: "Bello, Antioquia — Colombia",
   calendarUrl: process.env.NEXT_PUBLIC_CALENDAR_URL ?? "",
+  whatsappNumber: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "").replace(/\D/g, ""),
+  whatsappDefaultMessage:
+    "Hola Beaconex, me gustaría recibir información sobre sus servicios.",
   navLinks: [
     { href: "#servicios", label: "Servicios" },
     { href: "#proceso", label: "Proceso" },
@@ -18,7 +21,7 @@ export const siteConfig = {
     line1: "Tecnología",
     line2: "a Medida",
     sub: "Somos expertos en software, transformación digital y marketing tecnológico. Creamos soluciones atractivas y modernas que capturan la esencia de cada negocio.",
-    primaryCta: "Agendar por correo",
+    primaryCta: "Agendar llamada",
     secondaryCta: "Ver servicios",
   },
   servicesIntro: {
@@ -163,28 +166,61 @@ export const siteConfig = {
   banner: {
     line1: "Construimos",
     line2: "Tus Ideas",
-    cta: "Escríbenos",
+    cta: "Agendar llamada",
   },
   contactIntro: {
     label: "Contacto",
     title: "¿Listo para el siguiente paso?",
-    sub: "Escríbenos para agendar una llamada o cuéntanos tu proyecto. Respondemos en menos de 24 horas.",
-    scheduleCta: "Agendar por correo",
+    sub: "Completa el formulario o escríbenos por WhatsApp. Respondemos en menos de 24 horas.",
+    scheduleCta: "Ir al formulario",
     formCta: "Enviar mensaje",
+    whatsappCta: "Escribe",
   },
 } as const;
 
 export type ServiceId = (typeof siteConfig.services)[number]["id"];
 
+const serviceIds = siteConfig.services.map((service) => service.id);
+
+export function isServiceId(value: string | null | undefined): value is ServiceId {
+  return Boolean(value && serviceIds.includes(value as ServiceId));
+}
+
+export function getServiceFormHref(serviceId?: ServiceId | "otro"): string {
+  if (!serviceId) return "#contacto";
+  return `/?servicio=${serviceId}#contacto`;
+}
+
 export function getScheduleHref(): string {
   if (siteConfig.calendarUrl) return siteConfig.calendarUrl;
-  const subject = encodeURIComponent("Agendar llamada — Beaconex");
-  const body = encodeURIComponent(
-    "Hola Beaconex,\n\nMe gustaría agendar una llamada para hablar sobre mi proyecto.\n\nNombre:\nEmpresa:\nDisponibilidad:\n",
-  );
-  return `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
+  return "#contacto";
 }
 
 export function isExternalSchedule(): boolean {
   return Boolean(siteConfig.calendarUrl);
+}
+
+export function getWhatsAppHref(serviceId?: ServiceId): string {
+  const number = siteConfig.whatsappNumber;
+  if (!number) return "#contacto";
+
+  let message: string = siteConfig.whatsappDefaultMessage;
+  if (serviceId) {
+    const service = siteConfig.services.find((item) => item.id === serviceId);
+    if (service) {
+      const name = service.titleLines.join(" ");
+      message = `Hola Beaconex, me interesa el paquete ${name}. ¿Me pueden orientar?`;
+    }
+  }
+
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
+
+export function getServiceWhatsAppLinks() {
+  return siteConfig.services.map((service) => ({
+    id: service.id,
+    name: service.titleLines.join(" "),
+    formUrl: `${siteConfig.url}${getServiceFormHref(service.id)}`,
+    whatsappUrl: getWhatsAppHref(service.id),
+  }));
 }

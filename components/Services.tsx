@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/site";
+import { getServiceFormHref, siteConfig } from "@/lib/site";
 import styles from "./Services.module.css";
 
 export default function Services() {
@@ -31,7 +31,7 @@ export default function Services() {
                   <li key={feature}>{feature}</li>
                 ))}
               </ul>
-              <a className={styles.more} href="#contacto">
+              <a className={styles.more} href={getServiceFormHref(service.id)}>
                 {service.cta}
               </a>
             </article>

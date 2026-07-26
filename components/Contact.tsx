@@ -1,21 +1,31 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
-  getScheduleHref,
-  isExternalSchedule,
+  getWhatsAppHref,
+  isServiceId,
   siteConfig,
+  type ServiceId,
 } from "@/lib/site";
 import styles from "./Contact.module.css";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export default function Contact() {
-  const { contactIntro, services, email, url, location } = siteConfig;
-  const scheduleHref = getScheduleHref();
-  const external = isExternalSchedule();
+function ContactForm() {
+  const { contactIntro, services, email, url, location, whatsappNumber } =
+    siteConfig;
+  const searchParams = useSearchParams();
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const [servicio, setServicio] = useState("");
+
+  useEffect(() => {
+    const requested = searchParams.get("servicio");
+    if (isServiceId(requested) || requested === "otro") {
+      setServicio(requested);
+    }
+  }, [searchParams]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -46,6 +56,7 @@ export default function Contact() {
       }
       setStatus("success");
       form.reset();
+      setServicio("");
     } catch {
       setStatus("error");
       setError("No se pudo enviar. Intenta de nuevo.");
@@ -60,15 +71,23 @@ export default function Contact() {
           <h2 className="section-title">{contactIntro.title}</h2>
           <p className="section-sub">{contactIntro.sub}</p>
 
-          <a
-            className={`btn btn-primary ${styles.schedule}`}
-            href={scheduleHref}
-            {...(external
-              ? { target: "_blank", rel: "noopener noreferrer" }
-              : {})}
-          >
-            {contactIntro.scheduleCta}
-          </a>
+          <div className={styles.ctaRow}>
+            <a className={`btn btn-primary ${styles.schedule}`} href="#formulario-contacto">
+              {contactIntro.scheduleCta}
+            </a>
+            {whatsappNumber ? (
+              <a
+                className={`btn ${styles.whatsapp}`}
+                href={getWhatsAppHref(
+                  isServiceId(servicio) ? (servicio as ServiceId) : undefined,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {contactIntro.whatsappCta}
+              </a>
+            ) : null}
+          </div>
 
           <ul className={styles.info}>
             <li>
@@ -85,7 +104,7 @@ export default function Contact() {
           </ul>
         </div>
 
-        <div className={styles.formWrap}>
+        <div className={styles.formWrap} id="formulario-contacto">
           {status === "success" ? (
             <p className={styles.success} role="status">
               Mensaje enviado. Te contactaremos en menos de 24 horas.
@@ -130,7 +149,12 @@ export default function Contact() {
 
               <div className={styles.field}>
                 <label htmlFor="servicio">¿En qué podemos ayudarte?</label>
-                <select id="servicio" name="servicio" defaultValue="">
+                <select
+                  id="servicio"
+                  name="servicio"
+                  value={servicio}
+                  onChange={(event) => setServicio(event.target.value)}
+                >
                   <option value="">Selecciona un servicio</option>
                   {services.map((service) => (
                     <option key={service.id} value={service.id}>
@@ -170,5 +194,13 @@ export default function Contact() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function Contact() {
+  return (
+    <Suspense fallback={<section id="contacto" className="section" />}>
+      <ContactForm />
+    </Suspense>
   );
 }
