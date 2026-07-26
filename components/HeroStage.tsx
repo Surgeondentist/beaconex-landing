@@ -118,6 +118,31 @@ function polar(angleDeg: number, distance: number, cx: number, cy: number, radiu
   };
 }
 
+const MATRIX_GLYPHS = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン<>{}[]$#@*&%ABCDEF";
+const MATRIX_TOKENS = ["01", "10", "SYNC", "API", "ETL", "JSON", "CRM", "n8n", "HTTP", "SQL", "AI", "IO"];
+
+function buildColumn(seed: number, length: number) {
+  let out = "";
+  for (let i = 0; i < length; i += 1) {
+    if (i % 7 === 0) {
+      out += MATRIX_TOKENS[(seed + i) % MATRIX_TOKENS.length] + "\n";
+    } else {
+      out += MATRIX_GLYPHS[(seed * 13 + i * 7) % MATRIX_GLYPHS.length] + "\n";
+    }
+  }
+  return out;
+}
+
+const MATRIX_COLUMNS = Array.from({ length: 14 }, (_, i) => ({
+  text: buildColumn(i + 3, 28),
+  delay: `${-(i * 0.45)}s`,
+  duration: `${4.2 + (i % 5) * 0.7}s`,
+  opacity: 0.28 + (i % 4) * 0.12,
+}));
+
+const RING_TEXT =
+  "01 · SYNC · API · ETL · JSON · CRM · n8n · ZAPIER · DATA · FLOW · HTTP · SQL · AI · IO · 01 · ";
+
 export default function HeroStage() {
   const stageRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 8, y: -12 });
@@ -200,9 +225,46 @@ export default function HeroStage() {
         </svg>
 
         <div className={styles.core}>
+          <svg className={styles.coreOrbitText} viewBox="0 0 200 200" aria-hidden="true">
+            <defs>
+              <path id="orbitOuter" d="M100,100 m-92,0 a92,92 0 1,1 184,0 a92,92 0 1,1 -184,0" />
+              <path id="orbitInner" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0" />
+            </defs>
+            <g className={styles.orbitSpin}>
+              <text className={styles.orbitGlyphs}>
+                <textPath href="#orbitOuter" startOffset="0%">
+                  {RING_TEXT}
+                  {RING_TEXT}
+                </textPath>
+              </text>
+            </g>
+            <g className={styles.orbitSpinReverse}>
+              <text className={styles.orbitGlyphsDim}>
+                <textPath href="#orbitInner" startOffset="8%">
+                  {RING_TEXT}
+                </textPath>
+              </text>
+            </g>
+          </svg>
+
           <div className={styles.coreRing} />
           <div className={styles.coreRingSlow} />
           <div className={styles.coreSphere}>
+            <div className={styles.coreMatrix}>
+              {MATRIX_COLUMNS.map((col, i) => (
+                <span
+                  key={i}
+                  className={styles.matrixCol}
+                  style={{
+                    animationDelay: col.delay,
+                    animationDuration: col.duration,
+                    opacity: col.opacity,
+                  }}
+                >
+                  {col.text}
+                </span>
+              ))}
+            </div>
             <span className={styles.coreHighlight} />
           </div>
           <div className={styles.corePulse} />
