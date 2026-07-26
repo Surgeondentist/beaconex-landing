@@ -301,55 +301,72 @@
 .content {
   position: relative;
   z-index: 2;
-  max-width: 34rem;
+  max-width: 36rem;
   justify-self: start;
   padding-right: clamp(0rem, 1vw, 0.75rem);
   animation: rise 0.9s ease both;
 }
 
+.mark {
+  display: inline;
+  background: rgba(10, 14, 28, 0.72);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  box-shadow: 0.35em 0 0 rgba(10, 14, 28, 0.72), -0.35em 0 0 rgba(10, 14, 28, 0.72);
+  padding: 0.12em 0;
+}
+
 .brand {
-  font-size: clamp(1.25rem, 2.8vw, 1.85rem);
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--signal-mid);
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.85rem;
+  line-height: 1.55;
 }
 
 .title {
   display: flex;
   flex-direction: column;
-  gap: 0.02em;
-  font-size: clamp(2.85rem, 7.2vw, 5.1rem);
+  align-items: flex-start;
+  gap: 0.28rem;
+  font-size: clamp(1.85rem, 4.2vw, 2.85rem);
   font-weight: 700;
-  letter-spacing: 0.02em;
-  line-height: 0.96;
-  text-transform: uppercase;
-  margin-bottom: 1.15rem;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.96);
+  margin-bottom: 1rem;
 }
 
-.titleAccent {
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.88);
+.titleLine {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .sub {
-  font-size: clamp(1.02rem, 1.8vw, 1.15rem);
-  color: var(--on-dark-muted);
-  max-width: 30rem;
-  margin-bottom: 1.75rem;
-  line-height: 1.65;
+  font-size: clamp(0.95rem, 1.55vw, 1.05rem);
+  color: rgba(230, 236, 248, 0.88);
+  max-width: 32rem;
+  margin-bottom: 1.65rem;
+  line-height: 1.7;
 }
 
 .ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  align-items: center;
 }
 
 .primaryCta {
-  min-width: min(100%, 15.5rem);
+  min-width: min(100%, 15rem);
   justify-content: center;
+  font-weight: 700;
+  border-radius: 0.55rem;
+  padding-inline: 1.35rem;
 }
 
 /* Ejecutivos al centro óptico (entre copy y borde derecho) */

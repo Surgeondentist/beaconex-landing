@@ -24,15 +24,22 @@ export default function Hero() {
 
       <div className={`container ${styles.layout}`}>
         <div className={styles.content}>
-          <p className={`font-display ${styles.brand}`}>{hero.brand}</p>
+          <p className={`font-display ${styles.brand}`}>
+            <span className={styles.mark}>{hero.brand}</span>
+          </p>
           <h1 id="hero-title" className={`font-display ${styles.title}`}>
-            <span>{hero.line1}</span>
-            <span className={styles.titleAccent}>{hero.line2}</span>
+            {hero.titleLines.map((line) => (
+              <span key={line} className={styles.titleLine}>
+                <span className={styles.mark}>{line}</span>
+              </span>
+            ))}
           </h1>
-          <p className={styles.sub}>{hero.sub}</p>
+          <p className={styles.sub}>
+            <span className={styles.mark}>{hero.sub}</span>
+          </p>
           <div className={styles.ctas}>
             <a
-              className={`btn btn-primary ${styles.primaryCta}`}
+              className={`btn btn-light ${styles.primaryCta}`}
               href={scheduleHref}
               {...(external
                 ? { target: "_blank", rel: "noopener noreferrer" }

@@ -17,10 +17,12 @@ export const siteConfig = {
   ],
   hero: {
     brand: "Beaconex",
-    line1: "Evaluación",
-    line2: "gratuita",
-    sub: "Revisamos tu presencia digital, procesos y automatizaciones para mostrarte qué conviene priorizar. Sin costo y sin compromiso.",
-    primaryCta: "Solicitar evaluación gratuita",
+    titleLines: [
+      "Moderniza tu empresa",
+      "en cualquier momento y lugar",
+    ],
+    sub: "En Beaconex, impulsamos la transformación digital de empresas que quieren operar con más claridad. Evaluamos tu presencia digital, procesos y automatizaciones, y construimos soluciones a medida para que tu equipo avance con menos fricción.",
+    primaryCta: "Pedir evaluación gratuita",
     secondaryCta: "Ver servicios",
   },
   servicesIntro: {
