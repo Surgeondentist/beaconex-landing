@@ -24,19 +24,17 @@ export default function Hero() {
 
       <div className={`container ${styles.layout}`}>
         <div className={styles.content}>
-          <p className={`font-display ${styles.brand}`}>
-            <span className={styles.mark}>{hero.brand}</span>
-          </p>
-          <h1 id="hero-title" className={`font-display ${styles.title}`}>
-            {hero.titleLines.map((line) => (
-              <span key={line} className={styles.titleLine}>
-                <span className={styles.mark}>{line}</span>
-              </span>
-            ))}
-          </h1>
-          <p className={styles.sub}>
-            <span className={styles.mark}>{hero.sub}</span>
-          </p>
+          <div className={styles.copyPanel}>
+            <p className={`font-display ${styles.brand}`}>{hero.brand}</p>
+            <h1 id="hero-title" className={`font-display ${styles.title}`}>
+              {hero.titleLines.map((line) => (
+                <span key={line} className={styles.titleLine}>
+                  {line}
+                </span>
+              ))}
+            </h1>
+            <p className={styles.sub}>{hero.sub}</p>
+          </div>
           <div className={styles.ctas}>
             <a
               className={`btn btn-light ${styles.primaryCta}`}
