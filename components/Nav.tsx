@@ -37,10 +37,10 @@ export default function Nav() {
       <nav className={`container ${styles.nav}`} aria-label="Principal">
         <a href="#inicio" className={styles.logo} onClick={close}>
           <Image
-            src="/branding/Beaconex_Icon.png"
-            alt=""
-            width={36}
-            height={36}
+            src="/branding/Beaconex_BX_Transparent_600.png"
+            alt="Beaconex"
+            width={48}
+            height={48}
             className={styles.logoIcon}
             priority
           />

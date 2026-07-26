@@ -10,10 +10,10 @@ export default function Footer() {
       <div className={`container ${styles.inner}`}>
         <div className={styles.brand}>
           <Image
-            src="/branding/Beaconex_Icon.png"
-            alt=""
-            width={40}
-            height={40}
+            src="/branding/Beaconex_BX_Transparent_600.png"
+            alt="Beaconex"
+            width={56}
+            height={56}
             className={styles.logoIcon}
           />
           <p className={`font-display ${styles.logoText}`}>Beaconex</p>

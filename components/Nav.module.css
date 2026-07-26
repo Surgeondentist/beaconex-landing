@@ -26,9 +26,9 @@
 }
 
 .logoIcon {
-  width: 2.15rem;
-  height: 2.15rem;
-  border-radius: 0.45rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  object-fit: contain;
 }
 
 .logoText {
