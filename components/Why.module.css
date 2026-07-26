@@ -1,0 +1,148 @@
+.section {
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 10%, rgba(0, 102, 255, 0.22), transparent 55%),
+    linear-gradient(160deg, #08080d 0%, #0e1426 55%, #08080d 100%);
+  color: var(--white);
+}
+
+.label {
+  font-family: var(--font-mono), "Geist Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--signal-mid);
+  margin-bottom: 0.85rem;
+}
+
+.title {
+  font-size: clamp(2.35rem, 5vw, 3.75rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.08;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.sub {
+  color: var(--on-dark-muted);
+  max-width: 36rem;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.grid {
+  display: grid;
+  gap: 3rem;
+}
+
+.points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.point {
+  display: flex;
+  gap: 0.9rem;
+}
+
+.check {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 102, 255, 0.18);
+  color: var(--signal-mid);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 0.15rem;
+}
+
+.pointTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.pointBody {
+  color: var(--on-dark-muted);
+  font-size: 0.98rem;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 102, 255, 0.22);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 0 40px rgba(0, 102, 255, 0.08);
+}
+
+.panelTitle {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.panelSub {
+  color: var(--on-dark-muted);
+  margin-bottom: 1.75rem;
+  font-size: 0.95rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.stat {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.85rem;
+  padding: 1rem;
+}
+
+.statValue {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--signal-mid);
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: var(--on-dark-muted);
+}
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.tags li {
+  font-family: var(--font-mono), "Geist Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 102, 255, 0.35);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 4rem;
+    align-items: center;
+  }
+}

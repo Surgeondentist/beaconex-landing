@@ -1,0 +1,136 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  transition: background 0.25s, box-shadow 0.25s, backdrop-filter 0.25s;
+}
+
+.scrolled {
+  background: rgba(8, 8, 13, 0.92);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(0, 102, 255, 0.18);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 4.5rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+}
+
+.logoIcon {
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 0.45rem;
+}
+
+.logoText {
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  line-height: 1;
+}
+
+.links {
+  display: none;
+  list-style: none;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.links a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: var(--white);
+}
+
+.cta {
+  padding: 0.55rem 1.15rem !important;
+  font-size: 0.875rem !important;
+}
+
+.toggle {
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: transparent;
+  display: grid;
+  place-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 1.1rem;
+  height: 2px;
+  background: var(--white);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.bar[data-open="true"]:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.bar[data-open="true"]:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+.mobile {
+  position: fixed;
+  inset: 4.5rem 0 0;
+  background: rgba(8, 8, 13, 0.98);
+  padding: 1.5rem var(--space) 2rem;
+  border-top: 1px solid rgba(0, 102, 255, 0.2);
+}
+
+.mobile ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.mobile a {
+  text-decoration: none;
+  font-family: var(--font-display), "Big Shoulders", sans-serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.mobile .btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  font-family: var(--font-body), "Instrument Sans", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@media (min-width: 768px) {
+  .links {
+    display: flex;
+  }
+
+  .toggle,
+  .mobile {
+    display: none;
+  }
+}

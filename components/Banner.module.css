@@ -1,0 +1,39 @@
+.banner {
+  background:
+    radial-gradient(ellipse 70% 80% at 20% 50%, rgba(0, 102, 255, 0.3), transparent 55%),
+    linear-gradient(135deg, #08080d 0%, #0e1426 100%);
+  color: var(--white);
+  padding: clamp(4rem, 10vw, 6.5rem) 0;
+  border-block: 1px solid rgba(0, 102, 255, 0.2);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05em;
+  font-size: clamp(3rem, 10vw, 5.75rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.02;
+  text-transform: uppercase;
+}
+
+.accent {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.88);
+}
+
+@media (min-width: 800px) {
+  .inner {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,54 @@
+.footer {
+  background: var(--ink);
+  color: rgba(255, 255, 255, 0.55);
+  padding: 3rem 0;
+  text-align: center;
+  border-top: 1px solid rgba(0, 102, 255, 0.18);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.logoIcon {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.5rem;
+}
+
+.logoText {
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  line-height: 1;
+}
+
+.meta {
+  font-size: 0.95rem;
+}
+
+.footer a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer a:hover {
+  color: var(--signal-mid);
+}
+
+.copy {
+  margin-top: 1rem;
+  font-family: var(--font-mono), "Geist Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+}
