@@ -49,7 +49,15 @@ export async function POST(request: Request) {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ nombre, empresa, email, servicio, mensaje }),
+    body: JSON.stringify({
+      nombre,
+      empresa,
+      email,
+      servicio,
+      mensaje,
+      _replyto: email,
+      _subject: `Nuevo contacto Beaconex — ${nombre}`,
+    }),
   });
 
   if (!res.ok) {
