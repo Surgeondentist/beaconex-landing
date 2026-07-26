@@ -144,12 +144,13 @@ export const siteConfig = {
     cta: "Agendar llamada",
   },
   contactIntro: {
-    label: "Contacto",
-    title: "¿Listo para el siguiente paso?",
-    sub: "Completa el formulario o escríbenos por WhatsApp. Respondemos en menos de 24 horas.",
-    scheduleCta: "Ir al formulario",
-    formCta: "Enviar mensaje",
-    whatsappCta: "Escribe",
+    label: "Señal abierta",
+    titleLine1: "Cuéntanos",
+    titleLine2: "el reto",
+    sub: "Un mensaje basta. Te respondemos en menos de 24 horas — por formulario o WhatsApp.",
+    formCta: "Enviar señal",
+    whatsappCta: "Escribe por WhatsApp",
+    formLabel: "Deja tu mensaje",
   },
 } as const;
 
