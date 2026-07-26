@@ -101,7 +101,7 @@ export default function Nav() {
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
             >
-              Agendar llamada
+              Agendar por correo
             </a>
           </li>
         </ul>

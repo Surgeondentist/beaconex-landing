@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Beaconex",
   legalName: "Beaconex S.A.S.",
   tagline: "Soluciones Tecnológicas",
-  email: "hola@beaconex-solutions.com",
+  email: "jhon@beaconex-solutions.com",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.beaconex-solutions.com",
   location: "Bello, Antioquia — Colombia",
   calendarUrl: process.env.NEXT_PUBLIC_CALENDAR_URL ?? "",
@@ -18,7 +18,7 @@ export const siteConfig = {
     line1: "Tecnología",
     line2: "a Medida",
     sub: "Somos expertos en software, transformación digital y marketing tecnológico. Creamos soluciones atractivas y modernas que capturan la esencia de cada negocio.",
-    primaryCta: "Cotizar ahora",
+    primaryCta: "Agendar por correo",
     secondaryCta: "Ver servicios",
   },
   servicesIntro: {
@@ -163,13 +163,13 @@ export const siteConfig = {
   banner: {
     line1: "Construimos",
     line2: "Tus Ideas",
-    cta: "Hablemos",
+    cta: "Escríbenos",
   },
   contactIntro: {
     label: "Contacto",
     title: "¿Listo para el siguiente paso?",
-    sub: "Agenda una llamada o cuéntanos tu proyecto. Respondemos en menos de 24 horas.",
-    scheduleCta: "Agendar llamada",
+    sub: "Escríbenos para agendar una llamada o cuéntanos tu proyecto. Respondemos en menos de 24 horas.",
+    scheduleCta: "Agendar por correo",
     formCta: "Enviar mensaje",
   },
 } as const;
@@ -177,7 +177,12 @@ export const siteConfig = {
 export type ServiceId = (typeof siteConfig.services)[number]["id"];
 
 export function getScheduleHref(): string {
-  return siteConfig.calendarUrl || "#contacto";
+  if (siteConfig.calendarUrl) return siteConfig.calendarUrl;
+  const subject = encodeURIComponent("Agendar llamada — Beaconex");
+  const body = encodeURIComponent(
+    "Hola Beaconex,\n\nMe gustaría agendar una llamada para hablar sobre mi proyecto.\n\nNombre:\nEmpresa:\nDisponibilidad:\n",
+  );
+  return `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
 }
 
 export function isExternalSchedule(): boolean {

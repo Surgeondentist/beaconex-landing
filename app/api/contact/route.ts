@@ -37,7 +37,7 @@ export async function POST(request: Request) {
       {
         ok: false,
         error:
-          "Formulario no configurado. Escríbenos a hola@beaconex-solutions.com",
+          "Formulario no configurado. Escríbenos a jhon@beaconex-solutions.com",
       },
       { status: 503 },
     );
