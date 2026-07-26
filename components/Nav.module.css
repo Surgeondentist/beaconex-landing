@@ -1,14 +1,18 @@
 .header {
   position: fixed;
   inset: 0 0 auto;
-  z-index: 100;
-  transition: background 0.25s, box-shadow 0.25s, backdrop-filter 0.25s;
+  z-index: 200;
+  transition: background 0.25s, box-shadow 0.25s;
 }
 
 .scrolled {
-  background: rgba(8, 8, 13, 0.92);
-  backdrop-filter: blur(14px);
+  background: #08080d;
   box-shadow: 0 1px 0 rgba(0, 102, 255, 0.18);
+}
+
+.menuOpen {
+  background: #08080d;
+  box-shadow: none;
 }
 
 .nav {
@@ -67,18 +71,19 @@
   height: 2.75rem;
   border: 1.5px solid rgba(255, 255, 255, 0.28);
   border-radius: 999px;
-  background: transparent;
+  background: rgba(8, 8, 13, 0.35);
   display: grid;
   place-content: center;
   gap: 6px;
   cursor: pointer;
+  color: var(--white);
 }
 
 .bar {
   display: block;
   width: 1.1rem;
   height: 2px;
-  background: var(--white);
+  background: #ffffff;
   transition: transform 0.2s, opacity 0.2s;
 }
 
@@ -92,36 +97,62 @@
 
 .mobile {
   position: fixed;
-  inset: 4.5rem 0 0;
-  background: rgba(8, 8, 13, 0.98);
-  padding: 1.5rem var(--space) 2rem;
-  border-top: 1px solid rgba(0, 102, 255, 0.2);
+  inset: 0;
+  z-index: 190;
+  padding: 5.25rem var(--space) 2rem;
+  background: #08080d;
+  color: #ffffff;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobileOpen {
+  display: block;
+}
+
+.mobileInner {
+  max-width: var(--max);
+  margin-inline: auto;
 }
 
 .mobile ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.5rem 0 0;
 }
 
-.mobile a {
+.mobile li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile li:last-child {
+  border-bottom: none;
+  padding-top: 0.85rem;
+}
+
+.mobile a:not(.mobileCta) {
+  display: block;
   text-decoration: none;
   font-family: var(--font-display), "Big Shoulders", sans-serif;
-  font-size: 1.85rem;
+  font-size: clamp(1.65rem, 7vw, 2rem);
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--white);
+  color: #ffffff;
+  padding: 0.85rem 0;
 }
 
-.mobile .btn {
+.mobileCta {
   width: 100%;
-  margin-top: 0.5rem;
-  font-family: var(--font-body), "Instrument Sans", sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0;
-  text-transform: none;
+  margin-top: 0.35rem;
+  font-family: var(--font-body), "Instrument Sans", sans-serif !important;
+  font-size: 1rem !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {
@@ -131,6 +162,6 @@
 
   .toggle,
   .mobile {
-    display: none;
+    display: none !important;
   }
 }

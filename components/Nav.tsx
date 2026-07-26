@@ -33,79 +33,86 @@ export default function Nav() {
   const close = () => setOpen(false);
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
-      <nav className={`container ${styles.nav}`} aria-label="Principal">
-        <a href="#inicio" className={styles.logo} onClick={close}>
-          <Image
-            src="/branding/Beaconex_BX_Transparent_600.png"
-            alt="Beaconex"
-            width={48}
-            height={48}
-            className={styles.logoIcon}
-            priority
-          />
-          <span className={`font-display ${styles.logoText}`}>Beaconex</span>
-        </a>
+    <>
+      <header
+        className={`${styles.header} ${scrolled || open ? styles.scrolled : ""} ${open ? styles.menuOpen : ""}`}
+      >
+        <nav className={`container ${styles.nav}`} aria-label="Principal">
+          <a href="#inicio" className={styles.logo} onClick={close}>
+            <Image
+              src="/branding/Beaconex_BX_Transparent_600.png"
+              alt="Beaconex"
+              width={48}
+              height={48}
+              className={styles.logoIcon}
+              priority
+            />
+            <span className={`font-display ${styles.logoText}`}>Beaconex</span>
+          </a>
 
-        <ul className={styles.links}>
-          {siteConfig.navLinks.map((link) => (
-            <li key={link.href}>
-              <a href={link.href}>{link.label}</a>
+          <ul className={styles.links}>
+            {siteConfig.navLinks.map((link) => (
+              <li key={link.href}>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+            <li>
+              <a
+                className={`btn btn-primary ${styles.cta}`}
+                href={scheduleHref}
+                {...(external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                Evaluación
+              </a>
             </li>
-          ))}
-          <li>
-            <a
-              className={`btn btn-primary ${styles.cta}`}
-              href={scheduleHref}
-              {...(external
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-            >
-              Evaluación
-            </a>
-          </li>
-        </ul>
+          </ul>
 
-        <button
-          type="button"
-          className={styles.toggle}
-          aria-expanded={open}
-          aria-controls={menuId}
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className={styles.bar} data-open={open} />
-          <span className={styles.bar} data-open={open} />
-        </button>
-      </nav>
+          <button
+            type="button"
+            className={styles.toggle}
+            aria-expanded={open}
+            aria-controls={menuId}
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className={styles.bar} data-open={open} />
+            <span className={styles.bar} data-open={open} />
+          </button>
+        </nav>
+      </header>
 
+      {/* Fuera del header: evita que backdrop-filter recorte el panel fixed */}
       <div
         id={menuId}
         className={`${styles.mobile} ${open ? styles.mobileOpen : ""}`}
         hidden={!open}
       >
-        <ul>
-          {siteConfig.navLinks.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} onClick={close}>
-                {link.label}
+        <div className={styles.mobileInner}>
+          <ul>
+            {siteConfig.navLinks.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} onClick={close}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                className={`btn btn-primary ${styles.mobileCta}`}
+                href={scheduleHref}
+                onClick={close}
+                {...(external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                Evaluación
               </a>
             </li>
-          ))}
-          <li>
-            <a
-              className="btn btn-primary"
-              href={scheduleHref}
-              onClick={close}
-              {...(external
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-            >
-              Evaluación
-            </a>
-          </li>
-        </ul>
+          </ul>
+        </div>
       </div>
-    </header>
+    </>
   );
 }
