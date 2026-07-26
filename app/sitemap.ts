@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: siteConfig.url,
+      url: "https://www.beaconex-solutions.com",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
