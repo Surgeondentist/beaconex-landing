@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Big_Shoulders, Geist_Mono, Instrument_Sans } from "next/font/google";
-import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const bigShoulders = Big_Shoulders({
@@ -22,7 +21,8 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const siteUrl = siteConfig.url;
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.beaconex-solutions.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -33,12 +33,12 @@ export const metadata: Metadata = {
   description:
     "Desarrollo de software, transformación digital, consultoría Shopify, ciberseguridad y automatización con IA para empresas en crecimiento.",
   alternates: {
-    canonical: "/",
+    canonical: "https://www.beaconex-solutions.com",
   },
   openGraph: {
     type: "website",
     locale: "es_CO",
-    url: siteUrl,
+    url: "https://www.beaconex-solutions.com",
     siteName: "Beaconex",
     title: "Beaconex — Soluciones Tecnológicas",
     description: "Construimos la tecnología que tu negocio necesita.",

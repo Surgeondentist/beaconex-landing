@@ -13,21 +13,20 @@ export const siteConfig = {
     { href: "#servicios", label: "Servicios" },
     { href: "#proceso", label: "Proceso" },
     { href: "#nosotros", label: "Nosotros" },
-    { href: "#opiniones", label: "Opiniones" },
     { href: "#contacto", label: "Contacto" },
   ],
   hero: {
     brand: "Beaconex",
     line1: "Tecnología",
-    line2: "a Medida",
-    sub: "Somos expertos en software, transformación digital y marketing tecnológico. Creamos soluciones atractivas y modernas que capturan la esencia de cada negocio.",
+    line2: "hecha a medida",
+    sub: "Desarrollo de software, transformación digital y soluciones a medida para empresas que quieren operar con más claridad y menos fricción.",
     primaryCta: "Agendar llamada",
     secondaryCta: "Ver servicios",
   },
   servicesIntro: {
     label: "Servicios",
     title: "Soluciones digitales",
-    sub: "Desde tu primera presencia en línea hasta liderazgo tecnológico continuo.",
+    sub: "Desde tu primera presencia en línea hasta acompañamiento tecnológico continuo.",
   },
   services: [
     {
@@ -62,12 +61,12 @@ export const siteConfig = {
       cta: "Ver más",
     },
     {
-      id: "cto-externo",
-      titleLines: ["CTO", "Externo"],
+      id: "aliado-tecnologico",
+      titleLines: ["Aliado", "Tecnológico"],
       region: "Retainer mensual",
       featured: false,
       summary:
-        "Liderazgo tecnológico de alto nivel sin el costo de un CTO de tiempo completo. Estrategia, seguridad y decisiones con criterio.",
+        "Acompañamiento tecnológico cercano para priorizar, decidir y ejecutar sin el costo de un equipo interno completo.",
       features: [
         "Estrategia y hoja de ruta",
         "Revisión de seguridad y riesgos",
@@ -106,22 +105,22 @@ export const siteConfig = {
     },
   ],
   whyIntro: {
-    label: "Casos de enfoque",
-    title: "Por qué elegir Beaconex",
-    sub: "Entendemos que tu presencia digital es clave para el éxito. Ya sea lanzar algo nuevo, mejorar lo existente o acompañarte en el día a día, estamos para ayudarte.",
+    label: "Por qué Beaconex",
+    title: "Técnicos con mirada de negocio",
+    sub: "Construimos con criterio: claridad en el alcance, comunicación directa y soluciones que tu equipo pueda sostener.",
   },
   whyPoints: [
     {
-      title: "Experiencia comprobada",
-      body: "Años construyendo software, ecommerce y operaciones digitales para empresas B2B.",
+      title: "Seguridad desde el inicio",
+      body: "Integramos buenas prácticas de seguridad en el diseño, no como un parche al final.",
     },
     {
-      title: "Diseño con intención",
-      body: "Interfaces claras, centradas en el usuario y alineadas a tu marca — no plantillas genéricas.",
+      title: "Enfoque en resultados",
+      body: "Priorizamos lo que mueve el negocio: menos ruido, más entregables útiles.",
     },
     {
-      title: "Optimización constante",
-      body: "Seguridad, rendimiento y evolución continua después del lanzamiento.",
+      title: "Comunicación clara",
+      body: "Proceso visible, compromisos explícitos y seguimiento cercano en cada etapa.",
     },
   ],
   techTags: [
@@ -134,34 +133,10 @@ export const siteConfig = {
     "Ciberseguridad",
   ],
   stats: [
-    { value: "3+", label: "Años de experiencia" },
     { value: "B2B", label: "Enfoque empresarial" },
-    { value: "LATAM+", label: "Clientes internacionales" },
-    { value: "100%", label: "Comprometidos" },
-  ],
-  testimonialsIntro: {
-    label: "Estamos en cada detalle",
-    title: "Nuestros clientes lo dicen",
-  },
-  testimonials: [
-    {
-      name: "Alejandro",
-      role: "Operaciones · Medellín",
-      quote:
-        "Necesitábamos digitalizar procesos que vivían en Excel y WhatsApp. Beaconex no solo entregó la herramienta: ordenó la operación. Hoy respondemos más rápido y con menos errores.",
-    },
-    {
-      name: "Christian",
-      role: "Ecommerce · Miami",
-      quote:
-        "The Beaconex team rebuilt our Shopify setup and connected the pieces we were missing. Fast, clear, and focused on results — exactly what we needed.",
-    },
-    {
-      name: "Rodrigo",
-      role: "Dirección · Santiago",
-      quote:
-        "Como CTO externo nos ayudaron a priorizar la hoja de ruta y a tomar mejores decisiones tecnológicas. El proceso fue ágil y ya vemos más consultas cualificadas.",
-    },
+    { value: "SAS", label: "Empresa formal en Colombia" },
+    { value: "24h", label: "Respuesta a contactos" },
+    { value: "1:1", label: "Acompañamiento cercano" },
   ],
   banner: {
     line1: "Construimos",

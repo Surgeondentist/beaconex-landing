@@ -28,7 +28,7 @@ Usa estos en catálogo / respuestas rápidas:
 
 - Presencia Digital: `/?servicio=presencia-digital#contacto`
 - Transformación Operativa: `/?servicio=transformacion#contacto`
-- CTO Externo: `/?servicio=cto-externo#contacto`
+- Aliado Tecnológico: `/?servicio=aliado-tecnologico#contacto`
 
 ## Deploy en Vercel
 
