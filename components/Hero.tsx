@@ -4,6 +4,7 @@ import {
   isExternalSchedule,
   siteConfig,
 } from "@/lib/site";
+import HeroStage from "@/components/HeroStage";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -14,21 +15,14 @@ export default function Hero() {
   return (
     <section id="inicio" className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.gridBg} aria-hidden="true" />
+      <HeroStage />
+
+      <div className={styles.hexLeft} aria-hidden="true">
+        <div className={styles.hex} />
+        <div className={styles.hexGlow} />
+      </div>
 
       <div className={`container ${styles.layout}`}>
-        <div className={styles.visual} aria-hidden="true">
-          <div className={styles.hex} />
-          <div className={styles.hexGlow} />
-          <Image
-            src="/hero/evaluation-team.png"
-            alt=""
-            width={984}
-            height={884}
-            className={styles.team}
-            priority
-          />
-        </div>
-
         <div className={styles.content}>
           <p className={`font-display ${styles.brand}`}>{hero.brand}</p>
           <h1 id="hero-title" className={`font-display ${styles.title}`}>
@@ -50,6 +44,17 @@ export default function Hero() {
               {hero.secondaryCta}
             </a>
           </div>
+        </div>
+
+        <div className={styles.visual} aria-hidden="true">
+          <Image
+            src="/hero/evaluation-team.png"
+            alt=""
+            width={984}
+            height={884}
+            className={styles.team}
+            priority
+          />
         </div>
       </div>
     </section>

@@ -8,8 +8,8 @@
   overflow: hidden;
   color: var(--white);
   background:
-    radial-gradient(ellipse 50% 55% at 22% 55%, rgba(0, 102, 255, 0.28), transparent 62%),
-    radial-gradient(ellipse 40% 40% at 85% 30%, rgba(51, 133, 255, 0.12), transparent 55%),
+    radial-gradient(ellipse 45% 50% at 18% 48%, rgba(0, 102, 255, 0.26), transparent 62%),
+    radial-gradient(ellipse 48% 48% at 88% 42%, rgba(0, 102, 255, 0.2), transparent 58%),
     linear-gradient(165deg, #08080d 0%, #0e1426 55%, #08080d 100%);
 }
 
@@ -22,35 +22,248 @@
   background-size: 56px 56px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 88%);
   pointer-events: none;
+  z-index: 0;
 }
 
-.layout {
-  position: relative;
-  z-index: 1;
+/* Animación Matrix / integraciones — esquina derecha de fondo */
+.stageWrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  align-items: center;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
+  place-items: center end;
+  padding-right: clamp(0rem, 1vw, 1.5rem);
+  z-index: 0;
+  opacity: 0.55;
+}
+
+.stage {
+  position: relative;
+  width: min(78vw, 720px);
+  aspect-ratio: 800 / 600;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.12s linear;
+  mask-image: radial-gradient(ellipse 70% 70% at 60% 50%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 60% 50%, #000 20%, transparent 75%);
+}
+
+.streams {
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
+  overflow: visible;
 }
 
-.visual {
-  position: relative;
+.stream {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 8 16;
+}
+
+.flowFast {
+  animation: dataFlow 2.2s linear infinite;
+}
+
+.flowMed {
+  animation: dataFlow 2.9s linear infinite;
+  animation-delay: -0.7s;
+}
+
+.flowSlow {
+  animation: dataFlow 3.5s linear infinite;
+  animation-delay: -1.4s;
+}
+
+.core {
+  position: absolute;
+  left: 52.5%;
+  top: 50%;
+  width: 38%;
+  aspect-ratio: 1;
+  height: auto;
+  transform: translate(-50%, -50%);
   display: grid;
-  place-items: end center;
-  min-height: min(72vh, 640px);
-  animation: rise 0.9s ease both;
+  place-items: center;
+  transform-style: preserve-3d;
+}
+
+.coreSphere {
+  position: relative;
+  width: 62%;
+  height: 62%;
+  border-radius: 50%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.35), transparent 28%),
+    radial-gradient(circle at 50% 45%, #1a4fd0 0%, #0066ff 38%, #0a1a4a 72%, #050814 100%);
+  box-shadow:
+    0 0 40px rgba(0, 102, 255, 0.55),
+    0 0 90px rgba(0, 102, 255, 0.28),
+    inset 0 -18px 40px rgba(0, 0, 0, 0.45);
+  animation: floatCore 6s ease-in-out infinite;
+  isolation: isolate;
+}
+
+.coreMatrix {
+  position: absolute;
+  inset: -20% 4%;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.15rem;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(circle at 50% 50%, #000 42%, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 42%, transparent 78%);
+}
+
+.matrixCol {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-mono), "Geist Mono", ui-monospace, monospace;
+  font-size: clamp(0.42rem, 1.1vw, 0.58rem);
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  white-space: pre;
+  text-align: center;
+  color: rgba(180, 215, 255, 0.85);
+  text-shadow: 0 0 6px rgba(51, 133, 255, 0.75);
+  animation: matrixRain linear infinite;
+  will-change: transform;
+}
+
+.coreOrbitText {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.orbitSpin {
+  transform-origin: 100px 100px;
+  animation: spin 22s linear infinite;
+}
+
+.orbitSpinReverse {
+  transform-origin: 100px 100px;
+  animation: spin 32s linear infinite reverse;
+}
+
+.orbitGlyphs,
+.orbitGlyphsDim {
+  fill: rgba(51, 133, 255, 0.55);
+  font-family: var(--font-mono), "Geist Mono", ui-monospace, monospace;
+  font-size: 5.2px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.orbitGlyphsDim {
+  fill: rgba(0, 102, 255, 0.38);
+  font-size: 4.4px;
+}
+
+.coreHighlight {
+  position: absolute;
+  inset: 12% 18% auto auto;
+  width: 28%;
+  height: 18%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  filter: blur(2px);
+  transform: rotate(-28deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.coreRing,
+.coreRingSlow {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  border: 1px solid rgba(51, 133, 255, 0.35);
+  box-shadow: 0 0 24px rgba(0, 102, 255, 0.15);
+}
+
+.coreRing {
+  animation: spin 18s linear infinite;
+  border-top-color: rgba(0, 102, 255, 0.85);
+  border-left-color: transparent;
+}
+
+.coreRingSlow {
+  inset: 2%;
+  animation: spin 28s linear infinite reverse;
+  border-bottom-color: rgba(51, 133, 255, 0.7);
+  border-right-color: transparent;
+}
+
+.corePulse {
+  position: absolute;
+  inset: 20%;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 102, 255, 0.35);
+  animation: pulse 3.2s ease-out infinite;
+}
+
+.node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  animation: nodeFloat 4.8s ease-in-out infinite;
+  z-index: 2;
+}
+
+.nodeBadge {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.8rem;
+  background: rgba(8, 8, 13, 0.82);
+  border: 1px solid rgba(0, 102, 255, 0.35);
+  box-shadow:
+    0 0 18px rgba(0, 102, 255, 0.22),
+    inset 0 0 12px rgba(0, 102, 255, 0.08);
+}
+
+.nodeBadge svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.nodeLabel {
+  font-family: var(--font-mono), "Geist Mono", ui-monospace, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  white-space: nowrap;
+}
+
+/* Hexágono / “techo” a la izquierda */
+.hexLeft {
+  position: absolute;
+  left: clamp(0%, 4vw, 6%);
+  top: 18%;
+  width: min(42vw, 380px);
+  aspect-ratio: 1;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hex,
 .hexGlow {
   position: absolute;
-  left: 8%;
-  top: 12%;
-  width: min(78%, 420px);
-  aspect-ratio: 1;
+  inset: 0;
   clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0 50%);
-  pointer-events: none;
 }
 
 .hex {
@@ -68,14 +281,14 @@
   transform: scale(1.15) rotate(-8deg);
 }
 
-.team {
+.layout {
   position: relative;
-  z-index: 1;
-  width: min(100%, 540px);
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
-  animation: teamRise 1.1s ease both 0.1s;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(1.25rem, 3.5vw, 3rem);
+  width: 100%;
 }
 
 .content {
@@ -83,7 +296,7 @@
   z-index: 2;
   max-width: 36rem;
   justify-self: start;
-  animation: rise 0.9s ease both 0.12s;
+  animation: rise 0.9s ease both;
 }
 
 .brand {
@@ -131,6 +344,68 @@
   justify-content: center;
 }
 
+.visual {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  place-items: end center;
+  min-height: min(70vh, 620px);
+  animation: rise 0.9s ease both 0.08s;
+}
+
+.team {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 540px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
+  animation: teamRise 1.1s ease both 0.1s;
+}
+
+@keyframes dataFlow {
+  to {
+    stroke-dashoffset: -140;
+  }
+}
+
+@keyframes floatCore {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes nodeFloat {
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, calc(-50% - 5px));
+  }
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -163,6 +438,15 @@
   }
 }
 
+@keyframes matrixRain {
+  from {
+    transform: translateY(-35%);
+  }
+  to {
+    transform: translateY(15%);
+  }
+}
+
 @media (max-width: 960px) {
   .hero {
     padding: 6.5rem 0 2.5rem;
@@ -171,36 +455,48 @@
 
   .layout {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 
   .content {
     order: 1;
     max-width: none;
-    padding-top: 0.5rem;
   }
 
   .visual {
     order: 2;
     min-height: auto;
     place-items: center;
-    margin-top: 0.5rem;
   }
 
   .team {
-    width: min(92vw, 420px);
+    width: min(92vw, 400px);
   }
 
-  .hex,
-  .hexGlow {
+  .hexLeft {
     left: 50%;
     top: 8%;
-    width: min(70%, 300px);
-    transform: translateX(-50%) rotate(-8deg);
+    width: min(70vw, 280px);
+    transform: translateX(-50%);
+    opacity: 0.55;
   }
 
   .hex {
     animation: none;
+  }
+
+  .stageWrap {
+    opacity: 0.35;
+    place-items: end center;
+    padding-right: 0;
+  }
+
+  .stage {
+    width: min(100vw, 520px);
+  }
+
+  .nodeLabel {
+    display: none;
   }
 }
 
@@ -208,7 +504,21 @@
   .content,
   .visual,
   .team,
-  .hex {
+  .hex,
+  .stream,
+  .coreSphere,
+  .coreRing,
+  .coreRingSlow,
+  .corePulse,
+  .node,
+  .matrixCol,
+  .orbitSpin,
+  .orbitSpinReverse {
     animation: none !important;
+  }
+
+  .stage {
+    transition: none !important;
+    transform: none !important;
   }
 }
