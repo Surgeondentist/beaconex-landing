@@ -11,17 +11,18 @@ type Integration = {
   color: string;
 };
 
+/* Ángulos cada ~36° para evitar solapes (Facebook -148° ≈ AWS 208°). */
 const integrations: Integration[] = [
-  { id: "shopify", label: "Shopify", angle: -72, distance: 1, color: "#95BF47" },
-  { id: "google", label: "Google", angle: -28, distance: 1.05, color: "#4285F4" },
-  { id: "whatsapp", label: "WhatsApp", angle: 12, distance: 1, color: "#25D366" },
-  { id: "n8n", label: "n8n", angle: 48, distance: 1.08, color: "#EA4B71" },
-  { id: "zapier", label: "Zapier", angle: 88, distance: 1, color: "#FF4A00" },
-  { id: "hubspot", label: "HubSpot", angle: 128, distance: 1.05, color: "#FF7A59" },
-  { id: "salesforce", label: "Salesforce", angle: 168, distance: 1.02, color: "#00A1E0" },
-  { id: "instagram", label: "Instagram", angle: -112, distance: 1.06, color: "#E4405F" },
-  { id: "facebook", label: "Facebook", angle: -148, distance: 1, color: "#1877F2" },
-  { id: "aws", label: "AWS", angle: 208, distance: 1.04, color: "#FF9900" },
+  { id: "instagram", label: "Instagram", angle: -90, distance: 1.04, color: "#E4405F" },
+  { id: "shopify", label: "Shopify", angle: -54, distance: 1, color: "#95BF47" },
+  { id: "google", label: "Google", angle: -18, distance: 1.06, color: "#4285F4" },
+  { id: "whatsapp", label: "WhatsApp", angle: 18, distance: 1, color: "#25D366" },
+  { id: "n8n", label: "n8n", angle: 54, distance: 1.08, color: "#EA4B71" },
+  { id: "zapier", label: "Zapier", angle: 90, distance: 1, color: "#FF4A00" },
+  { id: "hubspot", label: "HubSpot", angle: 126, distance: 1.05, color: "#FF7A59" },
+  { id: "salesforce", label: "Salesforce", angle: 162, distance: 1.02, color: "#00A1E0" },
+  { id: "facebook", label: "Facebook", angle: 198, distance: 1, color: "#1877F2" },
+  { id: "aws", label: "AWS", angle: 234, distance: 1.04, color: "#FF9900" },
 ];
 
 function Icon({ id, color }: { id: string; color: string }) {
