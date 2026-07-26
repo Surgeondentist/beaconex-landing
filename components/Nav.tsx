@@ -61,7 +61,7 @@ export default function Nav() {
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
             >
-              Agendar
+              Evaluación
             </a>
           </li>
         </ul>
@@ -101,7 +101,7 @@ export default function Nav() {
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
             >
-              Agendar llamada
+              Evaluación
             </a>
           </li>
         </ul>

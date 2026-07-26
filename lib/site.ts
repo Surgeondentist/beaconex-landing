@@ -8,7 +8,7 @@ export const siteConfig = {
   calendarUrl: process.env.NEXT_PUBLIC_CALENDAR_URL ?? "",
   whatsappNumber: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "").replace(/\D/g, ""),
   whatsappDefaultMessage:
-    "Hola Beaconex, me gustaría recibir información sobre sus servicios.",
+    "Hola Beaconex, quiero solicitar la evaluación tecnológica gratuita.",
   navLinks: [
     { href: "#servicios", label: "Servicios" },
     { href: "#proceso", label: "Proceso" },
@@ -17,10 +17,10 @@ export const siteConfig = {
   ],
   hero: {
     brand: "Beaconex",
-    line1: "Tecnología",
-    line2: "hecha a medida",
-    sub: "Desarrollo de software, transformación digital y soluciones a medida para empresas que quieren operar con más claridad y menos fricción.",
-    primaryCta: "Agendar llamada",
+    line1: "Evaluación",
+    line2: "gratuita",
+    sub: "Revisamos tu presencia digital, procesos y automatizaciones para mostrarte qué conviene priorizar. Sin costo y sin compromiso.",
+    primaryCta: "Solicitar evaluación gratuita",
     secondaryCta: "Ver servicios",
   },
   servicesIntro: {
@@ -139,17 +139,17 @@ export const siteConfig = {
     { value: "1:1", label: "Acompañamiento cercano" },
   ],
   banner: {
-    line1: "Construimos",
-    line2: "Tus Ideas",
-    cta: "Agendar llamada",
+    line1: "Empieza con",
+    line2: "Claridad",
+    cta: "Evaluación gratuita",
   },
   contactIntro: {
-    label: "Señal abierta",
+    label: "Evaluación gratuita",
     titleLine1: "Cuéntanos",
     titleLine2: "el reto",
-    sub: "Un mensaje basta. Te respondemos en menos de 24 horas — por formulario o WhatsApp.",
-    formCta: "Enviar señal",
-    whatsappCta: "Escribe por WhatsApp",
+    sub: "Agenda tu evaluación sin costo. Te respondemos en menos de 24 horas — por formulario o WhatsApp.",
+    formCta: "Solicitar evaluación",
+    whatsappCta: "Evaluación por WhatsApp",
     formLabel: "Deja tu mensaje",
   },
 } as const;
