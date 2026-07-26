@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "Soluciones Tecnológicas",
   email: "jhon@beaconex-solutions.com",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.beaconex-solutions.com",
-  location: "Bello, Antioquia — Colombia",
+  location: "Medellín, Antioquia — Colombia",
   calendarUrl: process.env.NEXT_PUBLIC_CALENDAR_URL ?? "",
   whatsappNumber: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "").replace(/\D/g, ""),
   whatsappDefaultMessage:

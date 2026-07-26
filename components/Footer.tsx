@@ -18,9 +18,7 @@ export default function Footer() {
           />
           <p className={`font-display ${styles.logoText}`}>Beaconex</p>
         </div>
-        <p className={styles.meta}>
-          {siteConfig.tagline} · {siteConfig.location}
-        </p>
+        <p className={styles.meta}>{siteConfig.location}</p>
         <p>
           <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
         </p>
