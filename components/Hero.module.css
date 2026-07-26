@@ -393,7 +393,7 @@
 .team {
   position: relative;
   z-index: 3;
-  width: min(108%, 560px);
+  width: min(100%, 520px);
   max-width: none;
   height: auto;
   object-fit: contain;
@@ -556,7 +556,7 @@
   }
 
   .team {
-    width: min(112%, 600px);
+    width: min(112%, 560px);
   }
 }
 

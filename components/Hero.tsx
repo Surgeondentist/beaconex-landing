@@ -55,8 +55,8 @@ export default function Hero() {
           <Image
             src="/hero/evaluation-team.png"
             alt=""
-            width={984}
-            height={884}
+            width={1022}
+            height={988}
             className={styles.team}
             priority
           />
